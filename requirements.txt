@@ -1,0 +1,11 @@
+setuptools
+wheel
+Flask
+pytest-cov
+pytest
+pycodestyle
+pytest-pylint
+gunicorn
+uwsgi
+Jinja2
+Werkzeug
