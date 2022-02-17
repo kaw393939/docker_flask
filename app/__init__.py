@@ -1,8 +1,5 @@
 """A simple flask web app"""
-import os
-
 from flask import Flask
-
 
 def create_app():
     """Create and configure an instance of the Flask application."""
@@ -11,12 +8,6 @@ def create_app():
 
     @app.route("/")
     def index():
-        return "Hello, World!"
+        return "Hello, World! s"
 
     return app
-
-
-if __name__ == '__main__':
-    app = create_app()
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port, debug=True)
