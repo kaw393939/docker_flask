@@ -8,6 +8,6 @@ def create_app():
 
     @app.route("/")
     def index():
-        return "Hello, World! michaela"
+        return "Hello, World! IS421"
 
     return app
