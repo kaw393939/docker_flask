@@ -1,4 +1,4 @@
-name: Run Tests and Push Image to DockerHub
+name: Run Tests, Build Dockerfile, Run on Heroku
 
 on:
   push:
