@@ -11,8 +11,8 @@
 7. change line 19 of readme.md (this file) to have the link to your heroku app (click on the app and then there is a
    button to open the app in the upper right)  This will not work until it successfully deploys
 
-Heroku Notes: Get the heroku API key from account -> applications -> create authorization button
-GIthub Notes:  Set the action secrets repository -> settings -> actions -> secrets
+### Heroku Notes: Get the heroku API key from account in: -> applications -> create authorization button
+### GitHub Notes:  Set the action secrets repository in: -> settings -> actions -> secrets
 
 
 
