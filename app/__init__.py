@@ -1,5 +1,6 @@
 """A simple flask web app"""
-from flask import Flask
+from flask import Flask, render_template
+
 
 def create_app():
     """Create and configure an instance of the Flask application."""
@@ -8,6 +9,6 @@ def create_app():
 
     @app.route("/")
     def index():
-        return "Hello, World! IS219"
+        return render_template('index.html')
 
     return app
