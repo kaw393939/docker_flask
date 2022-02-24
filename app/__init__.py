@@ -2,7 +2,6 @@
 from flask import Flask, render_template
 from app.simple_pages import simple_pages
 
-
 def create_app():
     """Create and configure an instance of the Flask application."""
     app = Flask(__name__)
