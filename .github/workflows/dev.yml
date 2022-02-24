@@ -6,7 +6,7 @@ on:
       - 'master'
 
 jobs:
-  runtest:
+  run_pytest:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -21,7 +21,7 @@ jobs:
       - name: Test with pytest
         run: pytest -vv
 
-  deploy:
+  deploy_heroku:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
