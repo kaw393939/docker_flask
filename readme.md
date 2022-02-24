@@ -3,6 +3,10 @@
 [![Production Workflow](https://github.com/kaw393939/docker_flask/actions/workflows/prod.yml/badge.svg)](https://github.com/kaw393939/docker_flask/actions/workflows/prod.yml)
 
 * [Production Deployment](https://kwilliam-prod.herokuapp.com/)
+
+
+[![Development Workflow](https://github.com/kaw393939/docker_flask/actions/workflows/dev.yml/badge.svg)](https://github.com/kaw393939/docker_flask/actions/workflows/dev.yml)
+
 * [Developmental Deployment](https://kwilliam-dev.herokuapp.com/)
 
 ## Setting up CI/CD
@@ -17,13 +21,13 @@ app/dyno.
 3. Remove the origin remote and replace it with your own new repo.  (Do not add a readme or anything it should be empty)
 4. Create an account with Heroku, create an app for production and an app for development
 5. Create a new repo in Docker hub
-### Heroku Notes: Get the heroku API key from account in: -> applications -> create authorization button
 
-#### In the Repository Settings under Action -> Secret
+#### Setup Docker and Heroku Credentials In the Repository Settings under Action -> Secret
 
 6. Add repository settings for action secrets for DOCKER_USERNAME, DOCKER_PASSWORD, HEROKU_API_KEY (put the appropriate
    values in)
 ### GitHub Notes:  Set the action secrets repository in: -> settings -> actions -> secrets
+### Heroku Notes: Get the heroku API key from account in: -> applications -> create authorization button
 
 #### Change GitHub Actions Workflows for Dev and Prod
 
@@ -42,3 +46,9 @@ app/dyno.
 2. To run tests, Lint, and Coverage report use this command: pytest --pylint --cov
 
 .pylintrc is the config for pylint .coveragerc is the config for coverage setup.py is a config file for pytest
+
+
+### Future Notes and Resources
+https://flask-user.readthedocs.io/en/latest/basic_app.html
+https://hackersandslackers.com/flask-application-factory/
+https://suryasankar.medium.com/a-basic-app-factory-pattern-for-production-ready-websites-using-flask-and-sqlalchemy-dbb891cdf69f
