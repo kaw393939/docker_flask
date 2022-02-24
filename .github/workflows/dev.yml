@@ -19,7 +19,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
       - name: Test with pytest
-        run: pytest --pylint -vv
+        run: pytest -vv
 
   deploy:
     runs-on: ubuntu-latest
