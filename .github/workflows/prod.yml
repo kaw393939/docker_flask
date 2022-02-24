@@ -1,4 +1,4 @@
-name: Run Tests, Build Dockerfile, Run on Heroku
+name: Production Workflow
 
 on:
   push:
@@ -6,9 +6,6 @@ on:
       - 'master'
     tags:
       - 'v*'
-  pull_request:
-    branches:
-      - 'master'
 
 jobs:
   runtest:
@@ -58,6 +55,6 @@ jobs:
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "kwilliam-flask" #Must be unique in Heroku
+          heroku_app_name: "kwilliam-prod" #Must be unique in Heroku
           heroku_email: "keith@webizly.com"
           usedocker: true
