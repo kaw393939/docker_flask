@@ -17,15 +17,14 @@ app/dyno.
 ### Instructions
 
 1. Clone this repo to your local (DO NOT FORK THIS REPO, IF YOU DO YOU HAVE TO ENABLE ACTIONS BEFORE ANYTHING RUNS)
-2. Create a new repo on your own account
-3. Remove the origin remote and replace it with your own new repo.  (Do not add a readme or anything it should be empty)
+2. Create a new repo on your own Github account
+3. Change the origin by replacing it with your own new repo.  (Do not add a readme or any other file while creating the repository)
 4. Create an account with Heroku, create an app for production and an app for development
 5. Create a new repo in Docker hub
 
 #### Setup Docker and Heroku Credentials In the Repository Settings under Action -> Secret
 
-6. Add repository settings for action secrets for DOCKER_USERNAME, DOCKER_PASSWORD, HEROKU_API_KEY (put the appropriate
-   values in)
+6. In your newly created Github repository, add new repository secrets for DOCKER_USERNAME, DOCKER_PASSWORD, HEROKU_API_KEY (Values are DOCKER_USERNAME: your docker hub username; DOCKER_PASSWORD: your docker hub password; HEROKU_API_KEY: API key from the heroku app)
 ### GitHub Notes:  Set the action secrets repository in: -> settings -> actions -> secrets
 ### Heroku Notes: Get the heroku API key from account in: -> applications -> create authorization button
 
@@ -36,7 +35,7 @@ app/dyno.
 8. change line 59 to have your heroku email in: .github/workflows/prod.yml
 9. change line 31 to have your heroku app name in .github/workflows/dev.yml
 10. change line 32 to have your heroku email in .github/workflows/dev.yml
-11. Push your local repo and fix any errors that appear when the workflow is running. You can check the workflow in the
+11. Push code to your local repo and check for any errors and fix any errors that appear when the workflow is running. You can check the workflow in the
     actions.
 
 ## Running Locally
@@ -45,7 +44,7 @@ app/dyno.
    docker compose up --build
 2. To run tests, Lint, and Coverage report use this command: pytest --pylint --cov
 
-.pylintrc is the config for pylint .coveragerc is the config for coverage setup.py is a config file for pytest
+.pylintrc is the config for pylint, .coveragerc is the config for coverage and setup.py is a config file for pytest
 
 
 ### Future Notes and Resources
