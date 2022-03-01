@@ -5,7 +5,15 @@ on:
     - cron: "*/30 * * * *"
 
 jobs:
-  build:
+  keep_prod_awake:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: mikeesto/heroku-awake@1.0.0
+        with:
+          URL: "https://kwilliam-prod.herokuapp.com/"
+
+  keep_dev_awake:
     runs-on: ubuntu-latest
 
     steps:
