@@ -1,3 +1,4 @@
+"""These are reusable template function"""
 from os import getenv
 import datetime
 
@@ -22,5 +23,6 @@ def utility_text_processors():
         year=current_year(),
         format_price=format_price
     )
+
 
 

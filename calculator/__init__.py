@@ -1,12 +1,14 @@
 """ This is the Calculator Class"""
 from calculator.operations import Addition, Subtraction, Multiplication
 
+
 class Calculator:
     """ This is the default result property"""
     result = 0
 
-    def add(self, value_1,  value_2):
+    def add(self, value_1, value_2):
         """ This is the add method"""
+        # Call the static method add to return the sum and set it to the calculator result property
         self.result = Addition.add(value_1, value_2)
         return self.result
 

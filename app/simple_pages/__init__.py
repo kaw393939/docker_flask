@@ -12,3 +12,4 @@ def show(page):
         return render_template('%s.html' % page)
     except TemplateNotFound:
         abort(404)
+
