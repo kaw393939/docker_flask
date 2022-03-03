@@ -1,23 +1,22 @@
+"""Calculation and Addition, Multiplication, and Subtraction Classes """
 from calculator.operations import Addition as Add, Subtraction as Sub, Multiplication as Mult
-
-"""Calculation Class"""
 
 
 class Calculation:
     """ calculation abstract base class"""
 
     # pylint: disable=too-few-public-methods
-    def __init__(self, values: tuple):
+    def __init__(self, tuple_list: tuple):
         """ constructor method"""
-        self.values = Calculation.convert_args_to_tuple_of_float(values)
+        self.values = Calculation.convert_args_to_tuple_of_float(tuple_list)
 
     @classmethod
-    def create(cls, values: tuple):
+    def create(cls, tuple_list: tuple):
         """ factory method"""
-        return cls(values)
+        return cls(tuple_list)
 
     @staticmethod
-    def convert_args_to_tuple_of_float(values):
+    def convert_args_to_tuple_of_float(tuple_list):
         """ standardize values to list of floats"""
         # lists can be modified and tuple cannot, tuple are faster.
         # We need to convert the tuple of potentially random data types (its raw data)
@@ -25,7 +24,7 @@ class Calculation:
         # then i make it a tuple again because i actually won't need to change the calculation values
         # I can also use it as a list and then i would be able to edit the calculation
         list_values_float = []
-        for item in values:
+        for item in tuple_list:
             list_values_float.append(float(item))
         return tuple(list_values_float)
 
