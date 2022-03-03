@@ -1,0 +1,63 @@
+from calculator.operations import Addition as Add, Subtraction as Sub, Multiplication as Mult
+
+"""Calculation Class"""
+
+
+class Calculation:
+    """ calculation abstract base class"""
+
+    # pylint: disable=too-few-public-methods
+    def __init__(self, values: tuple):
+        """ constructor method"""
+        self.values = Calculation.convert_args_to_tuple_of_float(values)
+
+    @classmethod
+    def create(cls, values: tuple):
+        """ factory method"""
+        return cls(values)
+
+    @staticmethod
+    def convert_args_to_tuple_of_float(values):
+        """ standardize values to list of floats"""
+        # lists can be modified and tuple cannot, tuple are faster.
+        # We need to convert the tuple of potentially random data types (its raw data)
+        # into a standard data format to keep things consistent so we convert it to float
+        # then i make it a tuple again because i actually won't need to change the calculation values
+        # I can also use it as a list and then i would be able to edit the calculation
+        list_values_float = []
+        for item in values:
+            list_values_float.append(float(item))
+        return tuple(list_values_float)
+
+
+class Addition(Calculation):
+    """ calculation addition class"""
+
+    def get_result(self):
+        """get the addition results"""
+        sum_of_values = 0.0
+        for value in self.values:
+            sum_of_values = Add.add(value, sum_of_values)
+        return sum_of_values
+
+
+class Multiplication(Calculation):
+    """multiplication calculation object"""
+
+    def get_result(self):
+        """get the multiplication results"""
+        result = 1.0
+        for value in self.values:
+            result = Mult.multiply(result, value)
+        return result
+
+
+class Subtraction(Calculation):
+    """subtraction calculation object"""
+
+    def get_result(self):
+        """get the subtraction results"""
+        difference_of_values = 0.0
+        for value in self.values:
+            difference_of_values = Sub.subtract(difference_of_values, value)
+        return difference_of_values
