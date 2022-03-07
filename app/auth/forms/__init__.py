@@ -13,7 +13,11 @@ class login_form(FlaskForm):
 
 
 class register_form(FlaskForm):
-    email = EmailField('Email Address')
+    email = EmailField('Email Address', [
+        validators.DataRequired(),
+
+    ],description="You need to signup with an email")
+
     password = PasswordField('Create Password', [
         validators.DataRequired(),
         validators.EqualTo('confirm', message='Passwords must match'),
