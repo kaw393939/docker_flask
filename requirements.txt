@@ -11,3 +11,4 @@ Jinja2
 Werkzeug
 bootstrap-flask
 Flask-WTF
+flask_sqlalchemy
