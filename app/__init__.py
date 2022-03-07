@@ -8,14 +8,14 @@ from app.context_processors import utility_text_processors
 from app.simple_pages import simple_pages
 from app.auth import auth
 from app.exceptions import http_exceptions
-
-def page_not_found(e):
-    return render_template("404.html"), 404
-
 from app.db.models import db
 from app.db import database
 from app.auth import auth
 from app.cli import create_database
+
+def page_not_found(e):
+    return render_template("404.html"), 404
+
 def create_app():
     """Create and configure an instance of the Flask application."""
     app = Flask(__name__)
