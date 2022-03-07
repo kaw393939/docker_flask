@@ -14,10 +14,10 @@ class login_form(FlaskForm):
 
 class register_form(FlaskForm):
     email = EmailField('Email Address')
-    password = PasswordField('New Password', [
+    password = PasswordField('Create Password', [
         validators.DataRequired(),
         validators.EqualTo('confirm', message='Passwords must match'),
-        validators.length(min=6,max=35)
-    ])
-    confirm = PasswordField('Repeat Password')
+
+    ],description="Create a password ")
+    confirm = PasswordField('Repeat Password',description="Please retype your password to confirm it is correct")
     submit = SubmitField()

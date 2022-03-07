@@ -26,7 +26,7 @@ def login():
             login_user(user)
             flash("Welcome")
             return redirect(url_for('auth.dashboard'))
-    return render_template('login.html', title='Sign In', form=form)
+    return render_template('login.html', form=form)
 
 
 @auth.route('/register', methods=['POST', 'GET'])
@@ -46,10 +46,11 @@ def register():
         else:
             flash('Already Registered')
             return redirect(url_for('auth.login'))
-    return render_template('register.html', title='Register', form=form)
+    return render_template('register.html', form=form)
 
 
 @auth.route('/dashboard', methods=['POST', 'GET'])
+@login_required
 def dashboard():
     return render_template('dashboard.html' )
 

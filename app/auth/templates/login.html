@@ -2,9 +2,12 @@
 {% block content %}
     {% from 'bootstrap5/form.html' import render_form, render_field, render_form_row %}
 
-    <h2>Login</h2>
-    <div class="col-4">
-{{ render_form(form) }}
+    <div class="row">
+
+         <div class="col-4 mx-auto">
+             <h2>Login</h2>
+             {{ render_form(form) }}
+         </div>
     </div>
 
 {% endblock %}

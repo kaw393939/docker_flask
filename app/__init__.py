@@ -24,7 +24,6 @@ from flask_login import (
 )
 
 login_manager = LoginManager()
-
 def page_not_found(e):
     return render_template("404.html"), 404
 
@@ -33,6 +32,8 @@ def create_app():
     app = Flask(__name__)
     app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
     login_manager.init_app(app)
+    login_manager.login_view = "auth.login"
+
     bootstrap = Bootstrap5(app)
     app.register_blueprint(simple_pages)
     app.register_blueprint(auth)
