@@ -7,7 +7,14 @@
             {{ lipsum (n=5, html=True, min=20, max=100) }}
         </article>
         <aside class="col-4">
-            sidebar
+            <h2>Login</h2>
+            <form action="/login" method=post>
+              <dl>
+                {{ render_field(form.email) }}
+                {{ render_field(form.password) }}
+              </dl>
+              <p><input type=submit value=Login>
+            </form>
         </aside>
     </div>
 {% endblock %}
