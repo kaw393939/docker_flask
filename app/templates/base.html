@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        {% block head %}
+<head>
+    {% block head %}
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,56 +11,67 @@
             {{ bootstrap.load_css() }}
         {% endblock %}
 
-        <title>Your page title</title>
-        {% endblock %}
-    </head>
-    <body>
-     <div class="row">
-        <header class="mb-5">
-            <!-- As a link -->
+        <title>My Site - {% block title %}{% endblock %}</title>
+    {% endblock %}
+</head>
+<body>
+<div class="container">
+
+    <div class="row">
+        <header class="mb-2">
+            {% from 'bootstrap5/nav.html' import render_nav_item,render_breadcrumb_item %}
+            {% from 'bootstrap5/utils.html' import render_messages %}
+
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container">
-                    <a class="navbar-brand" href="/">My Site</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{{ url_for('simple_pages.show', page="index")}}">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ url_for('simple_pages.show', page="about")}}">About</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ url_for('simple_pages.show', page="page1")}}">Page 1</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ url_for('simple_pages.show', page="page2")}}">Page 2</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ url_for('simple_pages.show', page="page3")}}">Page 3</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ url_for('simple_pages.show', page="page4")}}">Page 4</a>
-                            </li>
-                        </ul>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <div class="navbar-nav mr-auto">
+                        {{ render_nav_item('simple_pages.show', 'Index', page="index") }}
+                        {{ render_nav_item('simple_pages.show','About', page="about" ) }}
+                        {{ render_nav_item('simple_pages.show','Welcome', page="welcome" ) }}
                     </div>
+                </div>
+                <div class="navbar-nav d-flex">
+                    {% if not g.user %}
+                        {{ render_nav_item('auth.register','Register' ) }}
+                        {{ render_nav_item('auth.login','Login' ) }}
+                    {% else %}
+                        {{ render_nav_item('auth.logout','Logout' ) }}
+                    {% endif %}
                 </div>
             </nav>
         </header>
-    </div>
-        <!-- Your page content -->
-        {% block content %}{% endblock %}
+        {% if url_for(request.endpoint, **request.view_args) != "/" %}
+            <div class="row">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        {{ render_breadcrumb_item('simple_pages.show', 'Index', page="index") }}
+                    </ol>
+                </nav>
+            </div>
+        {% endif %}
 
-        {% block scripts %}
-            <!-- Optional JavaScript -->
-            {{ bootstrap.load_js() }}
+    </div>
+    <!-- Your page content -->
+    <div class="row">
+    {{ render_messages() }}
+        {% block content %}
         {% endblock %}
-        <footer>
-        Environment: {{ deployment_environment }} - Copyright: {{ year }}
-        Message: {{ mymessage }} {{ format_price(100) }}
-    </footer>
-    </body>
+    </div>
+</div>
+
+{% block scripts %}
+    <!-- Optional JavaScript -->
+    {{ bootstrap.load_js() }}
+{% endblock %}
+<footer class="text-center mt-5">
+
+    Environment: {{ deployment_environment }} - Copyright: {{ year }}
+    Message: {{ mymessage }} {{ format_price(100) }}
+</footer>
+</body>
 </html>

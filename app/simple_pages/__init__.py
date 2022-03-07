@@ -5,7 +5,13 @@ simple_pages = Blueprint('simple_pages', __name__,
                         template_folder='templates')
 
 
-@simple_pages.route('/', defaults={'page': 'index'})
+@simple_pages.route('/')
+def index():
+    try:
+        return render_template('index.html')
+    except TemplateNotFound:
+        abort(404)
+
 @simple_pages.route('/<page>')
 def show(page):
     try:
