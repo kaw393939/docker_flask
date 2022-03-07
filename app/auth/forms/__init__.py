@@ -4,7 +4,10 @@ from wtforms.fields import *
 
 
 class login_form(FlaskForm):
-    email = EmailField('Email Address')
+    email = EmailField('Email Address', [
+        validators.DataRequired(),
+    ])
+
     password = PasswordField('Password', [
         validators.DataRequired(),
         validators.length(min=6,max=35)

@@ -48,10 +48,10 @@
     </div>
     <!-- Your page content -->
     <div class="row">
-    {{ render_messages() }}
-        {% block content %}
-        {% endblock %}
+        {{ render_messages() }}
     </div>
+    {% block content %}
+    {% endblock %}
 </div>
 
 {% block scripts %}
@@ -59,9 +59,7 @@
     {{ bootstrap.load_js() }}
 {% endblock %}
 <footer class="text-center mt-5">
-
     Environment: {{ deployment_environment }} - Copyright: {{ year }}
-    Message: {{ mymessage }} {{ format_price(100) }}
 </footer>
 </body>
 </html>
