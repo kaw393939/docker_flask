@@ -56,5 +56,10 @@ def dashboard():
 @auth.route("/logout")
 @login_required
 def logout():
+    """Logout the current user."""
+    user = current_user
+    user.authenticated = False
+    db.session.add(user)
+    db.session.commit()
     logout_user()
     return redirect(url_for('auth.login'))
