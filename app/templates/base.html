@@ -30,17 +30,17 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <div class="navbar-nav mr-auto">
-                        {{ render_nav_item('simple_pages.show', 'Index', page="index") }}
-                        {{ render_nav_item('simple_pages.show','About', page="about" ) }}
-                        {{ render_nav_item('simple_pages.show','Welcome', page="welcome" ) }}
+                        {{ render_nav_item('simple_pages.index', 'Index') }}
+                        {{ render_nav_item('simple_pages.about','About') }}
+                        {{ render_nav_item('simple_pages.welcome','Welcome') }}
                     </div>
                 </div>
                 <div class="navbar-nav d-flex">
-                    {% if not g.user %}
+                    {% if current_user.is_authenticated %}
+                        {{ render_nav_item('auth.logout','Logout' ) }}
+                    {% else %}
                         {{ render_nav_item('auth.register','Register' ) }}
                         {{ render_nav_item('auth.login','Login' ) }}
-                    {% else %}
-                        {{ render_nav_item('auth.logout','Logout' ) }}
                     {% endif %}
                 </div>
             </nav>

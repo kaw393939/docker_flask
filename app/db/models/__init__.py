@@ -1,29 +1,42 @@
+from datetime import datetime
+
+from flask_login._compat import unicode
+from werkzeug.security import check_password_hash, generate_password_hash
 from app.db import db
-class User(db.Model):
-    """An admin user capable of viewing reports.
+from flask_login import UserMixin
 
-    :param str email: email address of user
-    :param str password: encrypted password for the user
 
-    """
-    __tablename__ = 'user'
+class User(UserMixin, db.Model):
+    __tablename__ = "users"
 
-    email = db.Column(db.String, primary_key=True)
-    password = db.Column(db.String)
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    password = db.Column(db.String(300), nullable=False, unique=True)
     authenticated = db.Column(db.Boolean, default=False)
+    registered_on = db.Column('registered_on', db.DateTime)
 
-    def is_active(self):
-        """True, as all users are active."""
-        return True
-
-    def get_id(self):
-        """Return the email address to satisfy Flask-Login's requirements."""
-        return self.email
+    def __init__(self, email, password):
+        self.email = email
+        self.password = password
+        self.registered_on = datetime.utcnow()
 
     def is_authenticated(self):
-        """Return True if the user is authenticated."""
-        return self.authenticated
+        return True
+
+    def is_active(self):
+        return True
 
     def is_anonymous(self):
-        """False, as anonymous users aren't supported."""
         return False
+
+    def get_id(self):
+        return unicode(self.id)
+
+    def set_password(self, password):
+        self.password = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password, password)
+
+    def __repr__(self):
+        return '<User %r>' % self.username

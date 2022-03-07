@@ -12,3 +12,4 @@ Werkzeug
 bootstrap-flask
 Flask-WTF
 flask_sqlalchemy
+flask-login
