@@ -6,4 +6,3 @@
 __pycache__
 .coverage
 .bash_history
-database/db.sqlite
