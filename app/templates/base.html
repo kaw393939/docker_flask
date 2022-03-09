@@ -31,7 +31,12 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <div class="navbar-nav mr-auto">
-                        {{ render_nav_item('simple_pages.index', 'Index') }}
+                        {% if current_user.is_authenticated %}
+                            {{ render_nav_item('auth.dashboard','Dashboard' ) }}
+                        {% else %}
+                            {{ render_nav_item('simple_pages.index', 'Index') }}
+                        {% endif %}
+
                         {{ render_nav_item('simple_pages.about','About') }}
                         {{ render_nav_item('simple_pages.welcome','Welcome') }}
                     </div>
@@ -39,6 +44,7 @@
                 <div class="navbar-nav d-flex">
                     {% if current_user.is_authenticated %}
                         {{ render_nav_item('auth.logout','Logout' ) }}
+
                     {% else %}
                         {{ render_nav_item('auth.register','Register' ) }}
                         {{ render_nav_item('auth.login','Login' ) }}
